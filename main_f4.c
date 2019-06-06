@@ -1,9 +1,9 @@
 /***************************************************************************************************
-*  Orangeboot                                                                                      *
+*  OrangeBoot                                                                                      *
 *  Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                             *
 *  Copyright (c) 2012-2014 PX4 Development Team.                                                   *
 *                                                                                                  *
-*  This file is part of Orangeboot project.                                                        *
+*  This file is part of OrangeBoot project.                                                        *
 *                                                                                                  *
 *  @file     main_f4.c                                                                             *
 *  @brief                                                                                          *

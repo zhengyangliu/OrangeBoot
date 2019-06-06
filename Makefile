@@ -1,8 +1,8 @@
 #--------------------------------------------------------------------------------------------------#
-# Orangeboot                                                                                       #
+# OrangeBoot                                                                                       #
 # Copyright (c) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
 #                                                                                                  #
-# This file is part of Orangeboot project.                                                         #
+# This file is part of OrangeBoot project.                                                         #
 #                                                                                                  #
 # File    : makeifle                                                                               #
 # Brief   :                                                                                        #

@@ -1,10 +1,10 @@
 /***************************************************************************************************
-* Orangeboot                                                                                       *
+* OrangeBoot                                                                                       *
 * Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              *
 * Copyright (c) 2012-2014 PX4 Development Team.                                                    * 
 * Copyright (c) 2010 libopencm3 project (Gareth McMullin)                                          *
 *                                                                                                  *
-* This file is part of Orangeboot project.                                                         *
+* This file is part of OrangeBoot project.                                                         *
 *                                                                                                  *
 * @file     usart.h                                                                                *
 * @brief    程序串口驱动                                                                            *
