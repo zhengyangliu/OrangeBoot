@@ -1,0 +1,60 @@
+#--------------------------------------------------------------------------------------------------#
+# TheaBoot                                                                                         #
+# Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
+# Copyright (c) 2012-2014 PX4 Development Team.                                                    #
+#                                                                                                  #
+# This file is part of TheaBoot project.                                                           #
+#                                                                                                  #
+# File    : makeifle.f1                                                                            #
+# Brief   : stm32f1 makefile                                                                       #
+# Author  : Arthur Zheng                                                                           #
+# Email   : 15034186698@163.com                                                                    #
+# Version : 2.0.0.0                                                                                #
+# Date    : 2018/07/31                                                                             #
+#                                                                                                  #
+#--------------------------------------------------------------------------------------------------#
+# Remark         :                                                                                 #
+#--------------------------------------------------------------------------------------------------#
+# Change History :                                                                                 #
+# <Date>     | <Version> | <Author>       | <Description>                                          #
+#--------------------------------------------------------------------------------------------------#
+# 2017/07/15 | 1.0.0.0   | Arthur Zheng   | Create file                                            #
+# 2017/07/31 | 2.0.0.0   | Arthur Zheng   | 根据px4新版修改make规则                                 #
+#--------------------------------------------------------------------------------------------------#
+# Lisense       : BSD 3-Clause                                                                     #
+#                                                                                                  #
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR   #
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND #
+# FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR       #
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR              #
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR         #
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY     #
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR     #
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE            #
+# POSSIBILITY OF SUCH DAMAGE.                                                                      #
+#--------------------------------------------------------------------------------------------------#
+
+BUILD_DIR	 = $(BUILD_DIR_ROOT)/$(TARGET_FILE_NAME)
+
+#---------------------------------------------------------------------------------------------------
+# openOCD参数
+#---------------------------------------------------------------------------------------------------
+OPENOCD	         := openocd
+OOCD_INTERFACE	 := interface/jlink.cfg
+OOCD_TARGET	     := target/stm32f1x.cfg
+OOCDFLAGS := -f $(OOCD_INTERFACE) -f $(OOCD_TARGET)
+
+
+ARCH=stm32
+
+SRCS	    = $(COMMON_SRCS) $(ARCH_SRCS) main_f1.c
+
+FLAGS		+= -mthumb -mcpu=cortex-m3 -DTARGET_HW_$(TARGET_HW) \
+       -DSTM32F1 -T$(LINKER_FILE) -L$(LIBOPENCM3)/lib -lopencm3_stm32f1
+
+include rules.mk
+
+flash-bootloader:
+	$(OPENOCD) $(OOCDFLAGS) -c init -c "reset halt" -c "flash write_image erase $(BINARY)" -c "reset run" -c shutdown
+
+#********* Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****#

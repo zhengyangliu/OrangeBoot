@@ -1,0 +1,20 @@
+*.map
+*.elf
+*.bin
+*.hex
+*.pdb
+*.idb
+*.ilk
+*.old
+*.o
+*.obj
+*.out
+*.bak
+*.lib
+*.i
+*.d
+build/
+
+# vscode file
+.vscode
+.vscode/
