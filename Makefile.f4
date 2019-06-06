@@ -1,9 +1,9 @@
 #--------------------------------------------------------------------------------------------------#
-# TheaBoot                                                                                         #
+# Orangeboot                                                                                       #
 # Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
 # Copyright (c) 2012-2014 PX4 Development Team.                                                    #
 #                                                                                                  #
-# This file is part of TheaBoot project.                                                           #
+# This file is part of Orangeboot project.                                                         #
 #                                                                                                  #
 # File    : makeifle.f4                                                                            #
 # Brief   : stm32f4 makefile                                                                       #
