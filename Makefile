@@ -1,14 +1,13 @@
 #--------------------------------------------------------------------------------------------------#
 # Orangeboot                                                                                       #
-# Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
-# Copyright (c) 2012-2014 PX4 Development Team.                                                    #
+# Copyright (c) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
 #                                                                                                  #
 # This file is part of Orangeboot project.                                                         #
 #                                                                                                  #
 # File    : makeifle                                                                               #
 # Brief   :                                                                                        #
 # Author  : Arthur Zheng                                                                           #
-# Email   : 15034186698@163.com                                                                    #
+# Email   : arthurzheng150@gmail.com                                                               #
 # Version : 1.1.0.0                                                                                #
 # Date    : 2018/07/15                                                                             #
 #                                                                                                  #
@@ -35,21 +34,21 @@
 #--------------------------------------------------------------------------------------------------#
 
 #---------------------------------------------------------------------------------------------------
-# 路径设定
+# Path config
 #---------------------------------------------------------------------------------------------------
 export BUILD_DIR_ROOT ?= build
-export BL_BASE		?= $(wildcard .)
-export LIBOPENCM3	?= $(wildcard libopencm3)
+export BL_BASE		  ?= $(wildcard .)
+export LIBOPENCM3	  ?= $(wildcard libopencm3)
 MKFLAGS=--no-print-directory
 
 #---------------------------------------------------------------------------------------------------
-# 工具链设定
+# Toolchain config
 #---------------------------------------------------------------------------------------------------
 export CC	 	 	= arm-none-eabi-gcc
 export OBJCOPY		= arm-none-eabi-objcopy
 
 #---------------------------------------------------------------------------------------------------
-# 公共配置
+# Common config
 #---------------------------------------------------------------------------------------------------
 export FLAGS		= -std=gnu99 -Os -g -Wundef -Wall -fno-builtin -fgnu89-inline\
                       -I$(LIBOPENCM3)/include -ffunction-sections -nostartfiles\
@@ -60,7 +59,7 @@ export COMMON_SRCS	 = bl.c
 export ARCH_SRCS	 = cdcacm.c  usart.c
 
 #---------------------------------------------------------------------------------------------------
-# 构建对象
+# Tartget to build
 #---------------------------------------------------------------------------------------------------
 TARGETS	= \
 		TARGET_HW_STM32F030_ICM_V2_0 \
@@ -76,7 +75,7 @@ clean:
 	rm -rf build
 
 #---------------------------------------------------------------------------------------------------
-# 对象构建指令
+# Build command
 #---------------------------------------------------------------------------------------------------
 TARGET_HW_STM32F030_ICM_V2_0: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	make ${MKFLAGS} -f Makefile.f0 TARGET_HW=STM32F030_ICM_V2_0 LINKER_FILE=stm32f0.ld TARGET_FILE_NAME=$@
@@ -88,24 +87,17 @@ STM32F429_DISCO: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	make ${MKFLAGS} -f Makefile.f4 TARGET_HW=STM32F429_DISCO LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@
 
 #---------------------------------------------------------------------------------------------------
-# libopencm3构建
+# Build libopencm3
 #---------------------------------------------------------------------------------------------------
 .PHONY: $(LIBOPENCM3)
 $(LIBOPENCM3): 
 	make -C $(LIBOPENCM3) lib
 
 #---------------------------------------------------------------------------------------------------
-# 显示文件大小
+# Display file size
 #---------------------------------------------------------------------------------------------------
 .PHONY: sizes
 sizes:
 	@-find build/*/ -name '*.elf' -type f | xargs size 2> /dev/null || :
 
-debug:
-	arm-none-eabi-gdb -iex 'target extended | openocd -f interface/cmsis-dap.cfg -f target/stm32f0x.cfg -c "gdb_port pipe"' \
-	-iex 'monitor reset halt' -ex 'load' -ex 'break main' -ex 'c' ./build/TARGET_HW_STM32F030_ICM_V2_0/TARGET_HW_STM32F030_ICM_V2_0.elf
-
-flash:
-	make -f Makefile.f0 TARGET_HW=STM32F030_ICM_V2_0
-
-#********* Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****#
+#********* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****#

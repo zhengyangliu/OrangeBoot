@@ -1,25 +1,24 @@
 /***************************************************************************************************
-*  Orangeboot                                                                                      *
-*  Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                             *
-*  Copyright (c) 2012-2014 PX4 Development Team.                                                   *
+* Orangeboot                                                                                       *
+* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              *
 *                                                                                                  *
-*  This file is part of Orangeboot project.                                                        *
+* This file is part of Orangeboot project.                                                         *
 *                                                                                                  *
-*  @file     bl.h                                                                                  *
-*  @brief                                                                                          *
-*  @author   Arthur Zheng                                                                          *
-*  @email    15034186698@163.com                                                                   *
-*  @version  0.2.0.0                                                                               *
-*  @date     2018/07/15                                                                            *
+* @file     bl.h                                                                                   *
+* @brief                                                                                           *
+* @author   Arthur Zheng                                                                           *
+* @email    arthurzheng150@gmail.com                                                               *
+* @version  0.2.0.0                                                                                *
+* @date     2018/07/15                                                                             *
 *                                                                                                  *
 *--------------------------------------------------------------------------------------------------*
-*  Remark         :                                                                                *
+* Remark         :                                                                                 *
 *--------------------------------------------------------------------------------------------------*
-*  Change History :                                                                                *
-*  <Date>     | <Version> | <Author>       | <Description>                                         *
+* Change History :                                                                                 *
+* <Date>     | <Version> | <Author>       | <Description>                                          *
 *--------------------------------------------------------------------------------------------------*
-*  2018/04/19 | 0.1.0.0   | Arthur Zheng   | Create file                                           *
-*  2018/07/15 | 0.2.0.0   | Arthur Zheng   | Restyle the structure of project                      *
+* 2018/04/19 | 0.1.0.0   | Arthur Zheng   | Create file                                            *
+* 2018/07/15 | 0.2.0.0   | Arthur Zheng   | Restyle the structure of project                       *
 *--------------------------------------------------------------------------------------------------*
 * Lisense       : BSD 3-Clause                                                                     *
 *                                                                                                  *
@@ -116,5 +115,5 @@ extern int buf_get(void);
 
 #endif
 
-/********* Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/
+/********* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/
 

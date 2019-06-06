@@ -1,17 +1,17 @@
 /***************************************************************************************************
 * Orangeboot                                                                                       *
-* Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              *
+* Copyright (c) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              *
 * Copyright (c) 2012-2014 PX4 Development Team.                                                    * 
 * Copyright (c) 2010 libopencm3 project (Gareth McMullin)                                          *
 *                                                                                                  *
 * This file is part of Orangeboot project.                                                         *
 *                                                                                                  *
 * @file     cdcacm.c                                                                               *
-* @brief    程序串口驱动                                                                            *
+* @brief    USB CDCACM driver                                                                      *
 * @author   Arthur Zheng                                                                           *
-* @email    15034186698@163.com                                                                    *
-* @version  1.0.0.0                                                                                *
-* @date     2018/07/15                                                                             *
+* @email    arthurzheng150@gmail.com                                                               *
+* @version  1.0.0.2                                                                                *
+* @date     2019/06/06                                                                             *
 *                                                                                                  *
 *--------------------------------------------------------------------------------------------------*
 * Remark         :                                                                                 *
@@ -23,6 +23,8 @@
 * unknown    | unknown   | David Sidrane  | unknown                                                *
 * 2018/07/15 | 1.0.0.0   | Arthur Zheng   | Restyle the structure of project                       *
 * 2018/07/17 | 1.0.0.1   | Arthur Zheng   | Updata USBlib include for lastest libopencm3           *
+* 2019/06/06 | 1.0.0.2   | Arthur Zheng   | Move otg_fs.h include pos incase of compilation        *
+*                                           failure when we use stm32f0                            *
 *--------------------------------------------------------------------------------------------------*
 * Lisense       : GPLv3                                                                            *
 *                                                                                                  *
@@ -417,4 +419,4 @@ void usb_cout(uint8_t *buf, unsigned count)
 }
 #endif
 
-/********* Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/
+/********* Copyright (c) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/

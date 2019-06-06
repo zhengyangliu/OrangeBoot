@@ -1,27 +1,25 @@
 /***************************************************************************************************
-*  Orangeboot                                                                                      *
-*  Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                             *
-*  Copyright (c) 2012-2014 PX4 Development Team.                                                   *
+* Orangeboot                                                                                       *
+* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              *
 *                                                                                                  *
-*  This file is part of Orangeboot project.                                                        *
+* This file is part of Orangeboot project.                                                         *
 *                                                                                                  *
-*  @file     bl.c                                                                                  *
-*  @brief                                                                                          *
-*  @author   Arthur Zheng                                                                          *
-*  @email    15034186698@163.com                                                                   *
-*  @version  0.2.0.0                                                                               *
-*  @date     2018/07/15                                                                            *
+* @file     bl.c                                                                                   *
+* @brief                                                                                           *
+* @author   Arthur Zheng                                                                           *
+* @email    arthurzheng150@gmail.com                                                               *
+* @version  0.3.0.0                                                                                *
+* @date     2019/06/06                                                                             *
 *                                                                                                  *
 *--------------------------------------------------------------------------------------------------*
-*  Remark         :                                                                                *
+* Remark         :                                                                                 *
 *--------------------------------------------------------------------------------------------------*
-*  Change History :                                                                                *
-*  <Date>     | <Version> | <Author>       | <Description>                                         *
+* Change History :                                                                                 *
+* <Date>     | <Version> | <Author>       | <Description>                                          *
 *--------------------------------------------------------------------------------------------------*
-*  2018/04/19 | 0.1.0.0   | Arthur Zheng   | Create file                                           *
-*  2018/07/15 | 0.2.0.0   | Arthur Zheng   | Restyle the structure of project                      *
-*  2018/08/06 | 0.2.0.1   | Arthur Zheng   | 取消last_input机制，以修复两端口同时开启时错误输入数据会*
-*                                            导致的硬件错误                                         *
+* 2018/04/19 | 0.1.0.0   | Arthur Zheng   | Create file                                            *
+* 2018/07/15 | 0.2.0.0   | Arthur Zheng   | Restyle the structure of project                       *
+* 2019/06/06 | 0.3.0.0   | Arthur Zheng   | Add STM32F0 support                                    *
 *--------------------------------------------------------------------------------------------------*
 * Lisense       : BSD 3-Clause                                                                     *
 *                                                                                                  *
@@ -887,4 +885,4 @@ void bootloader(unsigned timeout)
     }
 }
 
-/********* Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/
+/********* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/

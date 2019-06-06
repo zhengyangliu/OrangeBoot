@@ -561,3 +561,5 @@ int main(void)
 		timeout = 0;
 	}
 }
+
+/********* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/

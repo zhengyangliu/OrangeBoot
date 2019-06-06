@@ -1,16 +1,15 @@
 #--------------------------------------------------------------------------------------------------#
 # Orangeboot                                                                                       #
-# Copyright (c) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
-# Copyright (c) 2012-2014 PX4 Development Team.                                                    #
+# Copyright (c) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              #
 #                                                                                                  #
 # This file is part of Orangeboot project.                                                         #
 #                                                                                                  #
 # File    : makeifle.f0                                                                            #
 # Brief   : stm32f0 makefile                                                                       #
 # Author  : Arthur Zheng                                                                           #
-# Email   : 15034186698@163.com                                                                    #
-# Version : 2.0.0.0                                                                                #
-# Date    : 2018/07/31                                                                             #
+# Email   : arthurzheng150@gmail.com                                                               #
+# Version : 1.0.0.0                                                                                #
+# Date    : 2019/06/06                                                                             #
 #                                                                                                  #
 #--------------------------------------------------------------------------------------------------#
 # Remark         :                                                                                 #
@@ -36,12 +35,12 @@
 BUILD_DIR	 = $(BUILD_DIR_ROOT)/$(TARGET_FILE_NAME)
 
 #---------------------------------------------------------------------------------------------------
-# openOCD参数
+# OpenOCD config
 #---------------------------------------------------------------------------------------------------
 OPENOCD	         := openocd
 OOCD_INTERFACE	 := interface/cmsis-dap.cfg
 OOCD_TARGET	     := target/stm32f0x.cfg
-OOCDFLAGS := -f $(OOCD_INTERFACE) -f $(OOCD_TARGET)
+OOCDFLAGS        := -f $(OOCD_INTERFACE) -f $(OOCD_TARGET)
 
 ARCH=stm32
 
@@ -53,6 +52,6 @@ FLAGS		+= -mthumb -mcpu=cortex-m0 -DTARGET_HW_$(TARGET_HW) \
 include rules.mk
 
 flash-bootloader:
-	$(OPENOCD) $(OOCDFLAGS) -c init -c "reset halt" -c "flash write_image erase $(HEX)" -c "reset run" -c shutdown
+	$(OPENOCD) $(OOCDFLAGS) -c init -c "reset halt" -c "flash write_image erase $(BINARY)" -c "reset run" -c shutdown
 
 #********* Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****#

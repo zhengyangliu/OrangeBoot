@@ -1,24 +1,23 @@
 /***************************************************************************************************
-*  Orangeboot                                                                                      *
-*  Copyright (C) 2018 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                             *
-*  Copyright (c) 2012-2014 PX4 Development Team.                                                   *
+* Orangeboot                                                                                       *
+* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD.                              *
 *                                                                                                  *
-*  This file is part of Orangeboot project.                                                        *
+* This file is part of Orangeboot project.                                                         *
 *                                                                                                  *
-*  @file     main_f1.c                                                                             *
-*  @brief                                                                                          *
-*  @author   Arthur Zheng                                                                          *
-*  @email    15034186698@163.com                                                                   *
-*  @version  0.2.0.0                                                                               *
-*  @date     2018/07/15                                                                            *
+* @file     main_f1.c                                                                              *
+* @brief                                                                                           *
+* @author   Arthur Zheng                                                                           *
+* @email    arthurzheng150@gmail.com                                                               *
+* @version  0.1.0.0                                                                                *
+* @date     2019/06/06                                                                             *
 *                                                                                                  *
 *--------------------------------------------------------------------------------------------------*
-*  Remark         :                                                                                *
+* Remark         :                                                                                 *
 *--------------------------------------------------------------------------------------------------*
-*  Change History :                                                                                *
-*  <Date>     | <Version> | <Author>       | <Description>                                         *
+* Change History :                                                                                 *
+* <Date>     | <Version> | <Author>       | <Description>                                          *
 *--------------------------------------------------------------------------------------------------*
-*  2019/06/06 | 0.1.0.0   | unknown        | Create file                                           *
+* 2019/06/06 | 0.1.0.0   | unknown        | Create file                                            *
 *--------------------------------------------------------------------------------------------------*
 * Lisense       : BSD 3-Clause                                                                     *
 *                                                                                                  *
@@ -510,3 +509,5 @@ int main(void)
 		timeout = 0;
 	}
 }
+
+/********* Copyright (C) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD  *****END OF FILE****/

@@ -6,12 +6,13 @@ BUILD_DIR	 = $(BUILD_DIR_ROOT)/$(TARGET_FILE_NAME)
 
 COBJS		:= $(addprefix $(BUILD_DIR)/, $(patsubst %.c,%.o,$(SRCS)))
 AOBJS		:= $(addprefix $(BUILD_DIR)/, $(patsubst %.S,%.o,$(ASRCS)))
+SUBDIRS		:= $(sort $(addprefix $(BUILD_DIR)/, $(dir $(ASRCS))) $(addprefix $(BUILD_DIR)/, $(dir $(SRCS))) )
 OBJS		:= $(COBJS) $(AOBJS)
 DEPS		:= $(COBJS:.o=.d)
 
 ELF		 = $(BUILD_DIR)/$(TARGET_FILE_NAME).elf
-BINARY	 = $(BUILD_DIR)/$(TARGET_FILE_NAME).bin
-HEX      = $(BUILD_DIR)/$(TARGET_FILE_NAME).hex     
+HEX		 = $(BUILD_DIR)/$(TARGET_FILE_NAME).hex
+BINARY		 = $(BUILD_DIR)/$(TARGET_FILE_NAME).bin
 
 all:	debug $(BUILD_DIR) $(ELF) $(BINARY) $(HEX)
 
@@ -33,8 +34,8 @@ $(BUILD_DIR)/%.o:	%.S
 	$(CC) -c -MMD $(FLAGS) -o $@ $*.S
 
 # Make the build directory
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+$(BUILD_DIR) $(SUBDIRS):
+	mkdir -p $(BUILD_DIR) $(SUBDIRS)
 
 $(ELF):		$(OBJS) $(MAKEFILE_LIST)
 	$(CC) -o $@ $(OBJS) $(FLAGS)
@@ -43,7 +44,7 @@ $(BINARY):	$(ELF)
 	$(OBJCOPY) -O binary $(ELF) $(BINARY)
 
 $(HEX):	$(ELF)
-	$(OBJCOPY) -O ihex $(ELF) $(HEX)
+	$(OBJCOPY) -Oihex $(ELF) $(HEX)
 
 # Dependencies for .o files
 -include $(DEPS)
