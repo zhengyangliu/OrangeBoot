@@ -1,7 +1,8 @@
 /************************************************************************
  *
- *   Copyright (c) 2012-2014 PX4 Development Team. All rights reserved.
- *   Copyright (c) 2010 libopencm3 project (Uwe Hermann, Stephen Caudle)
+ * Copyright (c) 2019 YiQiChuang(ShanXi) Electronic Technology CO,LTD. 
+ * All rights reserved.
+ * Copyright (c) 2010 libopencm3 project (Uwe Hermann, Stephen Caudle)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,21 +17,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * LICENSE NOTE FOR EXTERNAL LIBOPENCM3 LIBRARY:
- *
- *   The PX4 development team considers libopencm3 to be
- *   still GPL, not LGPL licensed, as it is unclear if
- *   each and every author agreed to the LGPS -> GPL change.
- *
  ***********************************************************************/
 
 /**
  * @file stm32f0.ld
  *
- * Linker script for ST STM32F0 bootloader (use first 4K of flash, 8K RAM).
+ * Linker script for ST STM32F0 bootloader.
  *
- * @author Uwe Hermann <uwe@hermann-uwe.de>
- * @author Stephen Caudle <scaudle@doceme.com>
+ * @author Arthur <arthurzheng150@gmail.com>
  */
 
 /* Define memory regions. */
