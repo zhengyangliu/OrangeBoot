@@ -62,13 +62,6 @@
 #define  BOOTLOADER_RESERVATION_SIZE  (BOOTLOADER_PAGE * BOARD_FLASH_PAGE_SIZE)
 #define  APP_SIZE_MAX                 (BOARD_FLASH_SIZE - BOOTLOADER_RESERVATION_SIZE)
 
-#if INTERFACE_USART
-# define BOARD_INTERFACE_CONFIG_USART	(void *)BOARD_USART
-#endif
-#if INTERFACE_USB
-# define BOARD_INTERFACE_CONFIG_USB  	NULL
-#endif
-
 /* Global variable  ------------------------------------------------------------------------------*/
 struct boardinfo board_info =
 {
@@ -436,37 +429,36 @@ void led_toggle(unsigned led)
   * @return none
   */
 int main(void)
-{
-    /* 默认为启动 APP */
-    uint8_t try_boot = 1;
-    
+{    
     /* 如果该值非零则会在此时间后退出 bootloader */    
     unsigned timeout = BOOTLOADER_DELAY;  
 
 	/* 板级初始化 */
 	board_init();
 
-	/* 配置时钟 */
-	clock_init();
+#ifdef INTERFACE_USART
+	/* XXX sniff for a USART connection to decide whether to wait in the bootloader? */
+	timeout = BOOTLOADER_DELAY;
+#endif
 
 	/* 如果强制bootloader引脚被触发，则不进行对APP的引导 */
 	if (board_test_force_pin())
 	{
-		try_boot = false;
+		timeout = 0xffffffff;
 	}
 
-#if INTERFACE_USART
+#ifdef INTERFACE_USART
 	/*
 	 * 通过检测RX上的电平，如果电平持续为低，或接收到打断指令，则不进行boot引导
 	 */
 	if (board_test_usart_receiving_break())
 	{
-		try_boot = false;
+		timeout = 0xffffffff;
 	}
 #endif
 
 	/* 如果没有找到升级请求，则尝试直接启动APP */
-    if (try_boot)
+    if (timeout == 0)
     {
         /* 直接尝试 boot */
         jump_to_app();
@@ -474,12 +466,12 @@ int main(void)
         timeout = 0;
     }
 
+	/* 配置时钟 */
+	clock_init();
+
 	/* 启动接口 */
 #if INTERFACE_USART
-	cinit(BOARD_INTERFACE_CONFIG_USART, USART);
-#endif
-#if INTERFACE_USB
-	cinit(BOARD_INTERFACE_CONFIG_USB, USB);
+	cinit(BOARD_INTERFACE_CONFIG, USART);
 #endif
 
 	while (1)
